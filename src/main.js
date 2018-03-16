@@ -11,6 +11,8 @@ var mbtiles = require('@mapbox/mbtiles');
 var packageJson = require('../package');
 
 var args = process.argv;
+console.log("args14:"+ args);
+console.log("args14:"+ args.length);
 if (args.length >= 3 && args[2][0] != '-') {
   args.splice(2, 0, '--mbtiles');
 }
@@ -36,7 +38,7 @@ var opts = require('commander')
     '-p, --port <port>',
     'Port [8080]',
     parseInt,
-    8080
+    9000
   )
   .option(
     '-C|--no-cors',
