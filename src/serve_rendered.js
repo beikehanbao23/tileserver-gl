@@ -430,11 +430,16 @@ module.exports = function(options, repo, params, id, dataResolver) {
         if (opt_overlay) {
           image.overlayWith(opt_overlay);
         }
+
+        watermark='';
+        console.log("watermark435====" + watermark);
         if (watermark) {
+        console.log("watermark4352====" + watermark);
+
           var canvas = new Canvas(scale * width, scale * height);
           var ctx = canvas.getContext('2d');
           ctx.scale(scale, scale);
-          ctx.font = '10px sans-serif';
+          ctx.font = '32px sans-serif bold';
           ctx.strokeWidth = '1px';
           ctx.strokeStyle = 'rgba(255,255,255,.4)';
           ctx.strokeText(watermark, 5, height - 5);
@@ -463,7 +468,16 @@ module.exports = function(options, repo, params, id, dataResolver) {
             'Last-Modified': lastModified,
             'Content-Type': 'image/' + format
           });
+          // console.log("buffer" + buffer);
+          fs.writeFile('./avatar2.png', buffer, function(err) {
+            if(err) {console.log(err)}
+          });
+          var base64Img = buffer.toString('base64');  // base64图片编码字符串
+          console.log("base64Img:" + base64Img);
+
+          // console.log("image" + image);
           return res.status(200).send(buffer);
+
         });
       });
     });
