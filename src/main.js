@@ -36,7 +36,7 @@ var opts = require('commander')
   )
   .option(
     '-p, --port <port>',
-    'Port [8080]',
+    'Port [9000]',
     parseInt,
     9000
   )
